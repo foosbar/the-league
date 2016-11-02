@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack -v --config webpack.config.js && node ./bin/www",
+    "start": "node ./node_modules/webpack/bin/webpack.js -v --config webpack.config.js && node ./bin/www",
     "build": "npm update && webpack -v --config webpack.config.js"
   },
   "engines": {

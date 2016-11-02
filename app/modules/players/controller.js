@@ -1,5 +1,6 @@
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
+import PlayerView from './views/player';
 import PlayersView from './views/players';
 
 export default Marionette.Object.extend({
@@ -9,14 +10,24 @@ export default Marionette.Object.extend({
     },
 
     index() {
-        console.log('INDEX CALLED', arguments);
         let Players = Backbone.Collection.extend({
             url: window.location.href
         });
-        var collection = new Players();
-        collection.fetch();
 
-        let view = new PlayersView({collection: collection});
-        this.container.show(view);
+        let players = new Players();
+        players.fetch();
+
+        this.container.show(new PlayersView({collection: players}));
+    },
+
+    viewPlayer(playerId) {
+        let Player = Backbone.Model.extend({
+            url: window.location.href
+        });
+
+        let player = new Player();
+        player.fetch();
+
+        this.container.show(new PlayerView({model: player}));
     }
 });

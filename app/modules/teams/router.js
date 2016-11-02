@@ -1,5 +1,6 @@
 import {AppRouter} from 'backbone.marionette';
 import Controller from './controller';
+import Radio from 'backbone.radio';
 
 export default AppRouter.extend({
     appRoutes: {
@@ -11,7 +12,7 @@ export default AppRouter.extend({
     },
 
     onRoute: function (name, path, args) {
-        //console.log('HomeRouter routed', name, path, args);
-        //HeaderService.start();
+        console.log('onRoute', arguments);
+        Radio.channel('topnav').trigger('highlight:link', 'teams');
     }
 });

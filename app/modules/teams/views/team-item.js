@@ -1,6 +1,7 @@
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import template from '../templates/team-item.pug';
+import moment from 'moment';
 
 export default Marionette.View.extend({
 
@@ -10,6 +11,12 @@ export default Marionette.View.extend({
 
     events: {
         'click a': 'followLink'
+    },
+
+    templateContext: {
+        formatDate: function(value) {
+            return moment(value).format('ll');
+        }
     },
 
     followLink(e) {

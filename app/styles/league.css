@@ -34,12 +34,16 @@ div#topnav-links > ul.navbar-nav  > li > a {
     font-weight: 700;
     text-transform: capitalize;
     font-variant: small-caps;
+    transition: background-color 1s ease-in-out;
 }
 
 div#topnav-links > ul.navbar-nav  > li > a > .glyphicon {
     margin-right: 4px;
 }
-
+div#topnav-links > ul.navbar-nav  > li.active > a {
+    background-color: #18bc9c;
+    color: white !important;
+}
 div#topnav-links > ul.navbar-nav  > li > a:hover {
     background-color: #18bc9c;
     color: #2c3e50 !important;
@@ -59,18 +63,22 @@ footer {
 }
 
 .team-item > .team-image {
-
     background-color: #00B7FF;
-    border-radius: 50%;
+    border-radius: 6px;
     display: block;
     float: left;
-    height: 25px;
+    height: 40px;
     margin: 0 10px 10px 0;
-    width: 25px;
+    width: 40px;
 }
 
 .team-item > .team-name {
     font-size: 18px;
     font-weight: 700;
 
+}
+
+
+th.player-image {
+    width: 40px;
 }

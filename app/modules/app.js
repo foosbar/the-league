@@ -15,7 +15,6 @@ export default Marionette.Application.extend({
     },
 
     startHistory() {
-        console.log('big start');
         function currentRoute() {
             return (_.isEmpty(Backbone.history.fragment)) ? null : Backbone.history.fragment;
         }

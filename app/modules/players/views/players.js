@@ -1,10 +1,46 @@
+import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
-import PlayerItem from './player-item';
+import urlapi from 'url';
 
-export default Marionette.CollectionView.extend({
-    tagName: 'ul',
+import RowTemplate from '../templates/player-row.pug';
+import TableTemplate from '../templates/player-table.pug';
 
-    className: 'nav nav-pills',
+const RowView = Marionette.View.extend({
+    tagName: 'tr',
 
-    childView: PlayerItem
+    template: RowTemplate,
+
+    events: {
+        'click a': 'followLink'
+    },
+
+    followLink: function(ev) {
+        ev.preventDefault();
+        var url = urlapi.parse(this.model.get('href'));
+        Backbone.history.navigate(url.pathname + (url.search || ''), {trigger: true});
+    }
+});
+
+const TableBody = Marionette.CollectionView.extend({
+    tagName: 'tbody',
+    childView: RowView
+});
+
+export default Marionette.View.extend({
+    tagName: 'table',
+    className: 'table table-hover',
+    template: TableTemplate,
+
+    regions: {
+        tbody: {
+            el: 'tbody',
+            replaceElement: true
+        }
+    },
+
+    onRender() {
+        this.showChildView('tbody', new TableBody({
+            collection: this.collection
+        }));
+    }
 });

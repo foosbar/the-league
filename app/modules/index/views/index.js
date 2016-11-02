@@ -4,11 +4,12 @@ import TopNav from './topnav';
 import Footer from './footer';
 
 export default Marionette.View.extend({
+
     template: template,
 
     regions: {
         topnav: 'nav#topnav',
-        content: 'section#content',
+        content: '#content',
         footer: 'footer#footer'
     },
 

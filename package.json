@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm update && node ./node_modules/webpack/bin/webpack.js -v --config webpack.config.js && node ./bin/www",
-    "build": "npm update && webpack -v --config webpack.config.js"
+    "postinstall": "webpack --config webpack.config.js --progress --colors",
+    "start": "node ./bin/www"
   },
   "engines": {
     "node": "6.9.1"

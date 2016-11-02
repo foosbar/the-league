@@ -59,12 +59,14 @@ footer {
 }
 
 .team-item > .team-image {
-    display: block;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 10px;
-    border-radius: 50%;
+
     background-color: #00B7FF;
+    border-radius: 50%;
+    display: block;
+    float: left;
+    height: 25px;
+    margin: 0 10px 10px 0;
+    width: 25px;
 }
 
 .team-item > .team-name {

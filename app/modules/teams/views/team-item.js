@@ -4,7 +4,7 @@ import template from '../templates/team-item.pug';
 
 export default Marionette.View.extend({
 
-    className: 'team-item col-md-4 col-sm-6 text-center',
+    className: 'team-item col-md-4 col-sm-6',
 
     template: template,
 

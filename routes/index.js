@@ -11,15 +11,15 @@ router.get('/', function (req, res, next) {
             var links = [{
                 rel: 'players',
                 href: req.linkto('/players'),
-                icon: 'glyphicon glyphicon-user'
+                icon: 'fa fa-user'
             }, {
                 rel: 'teams',
                 href: req.linkto('/teams'),
-                icon: 'glyphicon glyphicon-screenshot'
+                icon: 'fa fa-users'
             }, {
                 rel: 'seasons',
                 href: req.linkto('/seasons'),
-                icon: 'glyphicon glyphicon-calendar'
+                icon: 'fa fa-calendar'
             }];
             res.json(links);
         }

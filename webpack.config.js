@@ -6,7 +6,8 @@ module.exports = {
     entry: [ 'bootstrap-loader', './app/league.js'],
     output: {
         path: './public',
-        filename: 'js/league.js'
+        filename: 'js/league.js',
+        publicPath: '/'
     },
     module: {
         loaders: [{
@@ -28,8 +29,11 @@ module.exports = {
             test: /\.scss$/,
             loaders: ['style', 'css', 'postcss', 'sass']
         },{
-            test: /\.(woff2?|ttf|eot|svg)$/,
-            loader: 'url?limit=10000'
+            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: "url-loader?limit=10000&minetype=application/font-woff"
+        },{
+            test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: "file-loader"
         },{
             test: /bootstrap\/dist\/js\/umd\//,
             loader: 'imports?jQuery=jquery'

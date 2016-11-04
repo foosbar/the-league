@@ -37,8 +37,8 @@ div#topnav-links > ul.navbar-nav  > li > a {
     transition: background-color 0.33s ease-in-out;
 }
 
-div#topnav-links > ul.navbar-nav  > li > a > .glyphicon {
-    margin-right: 4px;
+div#topnav-links > ul.navbar-nav  > li > a > .fa {
+    margin-right: 6px;
 }
 div#topnav-links > ul.navbar-nav  > li.active > a {
     background-color: #18bc9c;

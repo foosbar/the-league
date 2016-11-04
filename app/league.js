@@ -1,3 +1,4 @@
+import 'font-awesome-webpack';
 import './styles/league.css';
 
 import Application from './modules/app';

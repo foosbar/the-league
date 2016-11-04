@@ -1,30 +1,39 @@
-import _ from 'underscore';
+import urlapi from 'url';
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
-import IndexView from './index/views/index';
+import LayoutView from './index/views/layout';
 
 export default Marionette.Application.extend({
     region: '#app',
 
     initialize() {
-        this.layout = new IndexView();
+        this.layout = new LayoutView();
         this.on('start', () => {
             this.showView(this.layout);
             this.startHistory();
         });
+
+        /**
+         * Listens for all clicks and if they are anchor links
+         * we prevent default and follow the link.
+         */
+        $('body').on('click', (e) => {
+            var target = $(e.target);
+            if (target.is('a[href]') ) {
+                e.preventDefault();
+                var url = urlapi.parse(target.attr('href'));
+                Backbone.history.navigate(url.pathname + (url.search || ''), {trigger: true});
+            }
+        });
     },
 
     startHistory() {
-        function currentRoute() {
-            return (_.isEmpty(Backbone.history.fragment)) ? null : Backbone.history.fragment;
-        }
-
         if (Backbone.history) {
             Backbone.history.start({
                 pushState: true,
-                root: '/'
+                root: '/',
+                silent: false
             });
-            Backbone.history.navigate(currentRoute(), {trigger: true});
         }
     }
 });

@@ -1,8 +1,10 @@
+import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
-import RowTemplate from '../templates/player-row.pug';
-import TableTemplate from '../templates/player-table.pug';
+import BaseView from '../../common/views/base-view';
+import RowTemplate from '../templates/seasons-row.pug';
+import TableTemplate from '../templates/seasons-table.pug';
 
-const RowView = Marionette.View.extend({
+const RowView = BaseView.extend({
     tagName: 'tr',
     template: RowTemplate,
 });

@@ -34,7 +34,7 @@ div#topnav-links > ul.navbar-nav  > li > a {
     font-weight: 700;
     text-transform: capitalize;
     font-variant: small-caps;
-    transition: background-color 1s ease-in-out;
+    transition: background-color 0.33s ease-in-out;
 }
 
 div#topnav-links > ul.navbar-nav  > li > a > .glyphicon {
@@ -56,6 +56,10 @@ footer {
     /* Set the fixed height of the footer here */
     height: 40px;
     background-color: #f5f5f5;
+}
+
+.btn, div#topnav-links > ul.navbar-nav  > li > a {
+    border-radius: 1px !important;
 }
 
 .team-item {

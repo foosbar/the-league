@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import PlayerView from './views/player';
-import PlayersView from './views/players';
+import PlayersLayout from './views/players-layout';
 
 export default Marionette.Object.extend({
 
@@ -17,7 +17,7 @@ export default Marionette.Object.extend({
         let players = new Players();
         players.fetch();
 
-        this.container.show(new PlayersView({collection: players}));
+        this.container.show(new PlayersLayout({collection: players}));
     },
 
     viewPlayer(playerId) {

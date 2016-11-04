@@ -6,20 +6,28 @@ var db = new sqlite3.Database('theleague.db');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-    var season = [];
+    res.format({
+        html: function() {
+            res.render('index');
+        },
 
-    db.each("SELECT * FROM season", function(err, row) {
-        console.log('ROW', row);
-        if(row)
-            row.games = req.linkto('/seasons/' + row.id + '/games');
-            row.teams = req.linkto('/seasons/' + row.id + '/teams');
-            row.href = req.linkto('/seasons/' + row.id);
-            season.push(row);
-    }, function(err, num) {
-        if(err) {
-            res.sendStatus(500, err);
-        } else {
-            res.json(season);
+        json: function() {
+            var season = [];
+
+            db.each("SELECT * FROM season", function(err, row) {
+                if(row) {
+                    row.games = req.linkto('/seasons/' + row.id + '/games');
+                    row.teams = req.linkto('/seasons/' + row.id + '/teams');
+                    row.href = req.linkto('/seasons/' + row.id);
+                    season.push(row);
+                }
+            }, function(err, num) {
+                if(err) {
+                    res.sendStatus(500, err);
+                } else {
+                    res.json(season);
+                }
+            });
         }
     });
 });

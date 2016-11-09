@@ -1,3 +1,4 @@
+import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import PlayersTable from './players';
 import Layout from '../templates/players-layout.pug';
@@ -11,15 +12,15 @@ export default Marionette.View.extend({
     },
 
     events: {
-        'click @ui.$createUserBtn': 'createUserModal'
+        'click @ui.$createUserBtn': 'createPlayerForm'
     },
 
     regions: {
         'table': '.players-table'
     },
 
-    createUserModal() {
-        console.log('createusermodal');
+    createPlayerForm() {
+        Backbone.history.navigate('/players/create', {trigger: true});
     },
 
     onRender() {

@@ -1,7 +1,9 @@
-import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
+import CreateForm from './views/create';
 import PlayerView from './views/player';
 import PlayersLayout from './views/players-layout';
+import Player from './models/player';
+import Players from './models/players';
 
 export default Marionette.Object.extend({
 
@@ -9,23 +11,24 @@ export default Marionette.Object.extend({
         this.container = options.container;
     },
 
-    index() {
-        let Players = Backbone.Collection.extend({
-            url: window.location.href
-        });
+    createForm() {
+        console.log('CREATE FORM!!!!!');
+        let player = new Player();
+        this.container.show(new CreateForm({model: player}));
+    },
 
+    index() {
         let players = new Players();
+        players.url = window.location.href;
+
         players.fetch();
 
         this.container.show(new PlayersLayout({collection: players}));
     },
 
     viewPlayer(playerId) {
-        let Player = Backbone.Model.extend({
-            url: window.location.href
-        });
-
         let player = new Player();
+        player.url = window.location.href;
         player.fetch();
 
         this.container.show(new PlayerView({model: player}));

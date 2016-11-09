@@ -5,6 +5,7 @@ import Radio from 'backbone.radio';
 export default AppRouter.extend({
     appRoutes: {
         'players(/)': 'index',
+        'players/create': 'createForm',
         'players/:playerId': 'viewPlayer'
     },
 

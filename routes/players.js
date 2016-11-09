@@ -32,6 +32,7 @@ router.get('/', function(req, res, next) {
                     users.push(row);
                 }
             }, function (err, num) {
+                console.log('Args', arguments);
                 if (err) {
                     res.sendStatus(500, err);
                 } else {

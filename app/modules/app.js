@@ -2,6 +2,7 @@ import urlapi from 'url';
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import LayoutView from './index/views/layout';
+import Radio from 'backbone.radio';
 
 export default Marionette.Application.extend({
     region: '#app',
@@ -13,6 +14,11 @@ export default Marionette.Application.extend({
             this.startHistory();
         });
 
+        Radio.channel('navigate').on('link:internal', function(href) {
+            var url = urlapi.parse(href);
+            Backbone.history.navigate(url.pathname + (url.search || ''), {trigger: true});
+        });
+
         /**
          * Listens for all clicks and if they are anchor links
          * we prevent default and follow the link.
@@ -21,8 +27,7 @@ export default Marionette.Application.extend({
             var target = $(e.target);
             if (target.is('a[href]') ) {
                 e.preventDefault();
-                var url = urlapi.parse(target.attr('href'));
-                Backbone.history.navigate(url.pathname + (url.search || ''), {trigger: true});
+                Radio.channel('navigate').trigger('link:internal', target.attr('href'));
             }
         });
     },

@@ -10,7 +10,7 @@ db.serialize(function() {
             id INTEGER PRIMARY KEY NOT NULL, 
             firstName TEXT, 
             lastName TEXT, 
-            email TEXT NOT NULL
+            email TEXT UNIQUE NOT NULL
         )
     `);
 

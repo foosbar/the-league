@@ -14,9 +14,7 @@ export default Marionette.View.extend({
     },
 
     onRender() {
-        this.getRegion('topnav').show(new TopNav());
-        this.getRegion('footer').show(new Footer());
-
-
+        this.showChildView('topnav', new TopNav());
+        this.showChildView('footer', new Footer());
     }
 });

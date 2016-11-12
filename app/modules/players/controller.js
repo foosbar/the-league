@@ -12,7 +12,6 @@ export default Marionette.Object.extend({
     },
 
     createForm() {
-        console.log('CREATE FORM!!!!!');
         let player = new Player();
         this.container.show(new CreateForm({model: player}));
     },
@@ -20,7 +19,6 @@ export default Marionette.Object.extend({
     index() {
         let players = new Players();
         players.url = window.location.href;
-
         players.fetch();
 
         this.container.show(new PlayersLayout({collection: players}));

@@ -62,6 +62,10 @@ footer {
     border-radius: 1px !important;
 }
 
+.btn .fa {
+    margin-right: 4px;
+}
+
 .team-item {
     margin-bottom: 20px;
 }

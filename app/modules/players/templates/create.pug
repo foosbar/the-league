@@ -2,15 +2,15 @@
     .col-sm-8.col-sm-offset-2
         h1 Create User
 
-        form.form
+        form#create-player-form.form(action="/players", method="post")
             .form-group
                 label(for="email") Email
-                input#email.form-control(type="email", placeholder="Email")
+                input#email.form-control(type="email", name="email", placeholder="Email")
             .form-group
                 label(for="firstName") First Name
-                input#firstName.form-control(type="text", placeholder="firstName")
+                input#firstName.form-control(type="text", name="firstName", placeholder="firstName")
             .form-group
                 label(for="lastName") Last Name
-                input#lastName.form-control(type="text", placeholder="lastName")
+                input#lastName.form-control(type="text", name="lastName", placeholder="lastName")
             .pull-right
-                button.btn.btn-primary.btn-sm(type="submit") Submit
+                button.btn.btn-primary.btn-sm(type="submit", form="create-player-form") Submit

@@ -1,4 +1,4 @@
-import Backbone from 'backbone';
+import Radio from 'backbone.radio';
 import Marionette from 'backbone.marionette';
 import template from '../templates/team-item.pug';
 import moment from 'moment';
@@ -10,7 +10,7 @@ export default Marionette.View.extend({
     template: template,
 
     events: {
-        'click a': 'followLink'
+        'click': 'followLink'
     },
 
     templateContext: {
@@ -21,8 +21,6 @@ export default Marionette.View.extend({
 
     followLink(e) {
         e.preventDefault();
-        e.stopPropagation();
-        // Not quite working
-        Backbone.history.navigate(this.model.get('href'));
+        Radio.channel('navigate').trigger('link:internal', this.model.link('self').href);
     }
 });

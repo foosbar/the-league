@@ -1,0 +1,10 @@
+.row
+    .col-sm-8.col-sm-offset-2
+        h1 Create Team
+
+        form#create-team-form.form(action="/teams", method="post")
+            .form-group
+                label(for="teamName") Team Name
+                input#teamName.form-control(type="text", name="name", placeholder="Team Name")
+            .pull-right
+                button.btn.btn-primary.btn-sm(type="submit", form="create-team-form") Submit

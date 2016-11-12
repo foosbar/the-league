@@ -2,9 +2,9 @@ import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import template from '../templates/index.pug';
 import TeamsView from './teams';
+import Teams from '../models/teams';
 
 export default Marionette.View.extend({
-    className: 'container',
 
     template: template,
 
@@ -12,16 +12,27 @@ export default Marionette.View.extend({
         teamTable: '.index-table'
     },
 
-    onRender() {
-        let Teams = Backbone.Collection.extend({
-            url: window.location.href
-        });
+    ui: {
+        '$createTeamBtn': '.btn-create-team'
+    },
 
-        let collection = new Teams();
-        let view = new TeamsView({collection: collection});
+    events: {
+        'click @ui.$createTeamBtn': 'createTeamForm'
+    },
+
+    createTeamForm() {
+        Backbone.history.navigate('/teams/create', {trigger: true});
+    },
+
+    onRender() {
+
+        let teams = new Teams();
+        teams.url = window.location.href;
+
+        let view = new TeamsView({collection: teams});
         this.getRegion('teamTable').show(view);
 
-        collection.fetch();
+        teams.fetch();
 
     }
 });

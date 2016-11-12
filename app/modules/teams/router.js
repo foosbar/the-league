@@ -4,6 +4,8 @@ import Radio from 'backbone.radio';
 
 export default AppRouter.extend({
     appRoutes: {
+        'teams/create': 'createForm',
+        'teams/:teamId(/)': 'viewTeam',
         'teams(/)': 'index'
     },
 
